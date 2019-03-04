@@ -1,0 +1,10 @@
+en:
+  dry_validation:
+    errors:
+      rules:
+        kafka:
+          invalid: 'this is it'
+          ssl_ca_cert:
+            invalid: 'hmm'
+        kafka_ssl_ca_cert:
+          invalid: 'hmmm'
