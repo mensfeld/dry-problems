@@ -5,22 +5,16 @@ class Contract < Dry::Validation::Contract
   config.messages_file = File.join('errors.yml')
 
   params do
-    required(:kafka).schema do
-      %i[
-        ssl_ca_cert
-        ssl_ca_cert2
-      ].each do |encryption_attribute|
-        optional(encryption_attribute).maybe(:str?)
-      end
-    end
+    required(:kafka3).filled(:str?)
+    required(:kafka4).filled(:str?)
   end
 
-  rule(kafka: :ssl_ca_cert2) do
-    failure(:not_with_2_a) unless with_2_a?(values[:kafka][:ssl_ca_cert2])
+  rule(:kafka3) do
+    failure(:not_with_2_a) unless with_2_a?(values[:kafka3])
   end
 
-  rule(kafka: :ssl_ca_cert) do
-    failure(:not_with_2_a) unless with_2_a?(values[:kafka][:ssl_ca_cert])
+  rule(:kafka4) do
+    failure(:not_with_2_a) unless with_2_a?(values[:kafka4])
   end
 
   def with_2_a?(value)
@@ -28,4 +22,4 @@ class Contract < Dry::Validation::Contract
   end
 end
 
-p Contract.new.call({ kafka: { ssl_ca_cert: '', ssl_ca_cert2: 'aaa' } })
+p Contract.new.call(kafka3: 'aaaaaa', kafka4: 'aaaaa')

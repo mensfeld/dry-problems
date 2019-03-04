@@ -8,3 +8,8 @@ en:
             invalid: 'hmm'
         kafka_ssl_ca_cert:
           invalid: 'hmmm'
+
+        kafka3:
+          not_with_2_a: 'not 2 a'
+        kafka4:
+          not_with_2_a: 'not 2 a'
